@@ -1,0 +1,669 @@
+/* =========================================
+   0. CONFIGURACIÓN BASE & VARIABLES
+   ========================================= */
+:root {
+  /* Paleta de Colores */
+  --color-black: #111111;
+  --color-dark-gray: #1a1a1a;
+  --color-card-bg: #252525;
+  --color-gold: #d4af37;
+  --color-gold-hover: #b59020;
+  --color-white: #ffffff;
+  --color-text-gray: #cccccc;
+
+  /* Tipografía y Espaciado */
+  --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+  --container-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-black);
+  color: var(--color-text-gray);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-speed) ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================
+   1. UTILIDADES Y CONTENEDORES
+   ========================================= */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-gold);
+  margin: 15px auto 0;
+}
+
+/* Botones Generales */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all var(--transition-speed) ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-hover);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   2. HEADER / HERO SECTION
+   ========================================= */
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("src/hero.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navegación */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding-left: 5%; /* Ajuste visual */
+  padding-right: 5%; /* Ajuste visual */
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--color-white);
+  letter-spacing: 3px;
+  border: 2px solid var(--color-gold);
+  padding: 5px 15px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: var(--color-white);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--color-gold);
+}
+
+/* Contenido Hero */
+.hero-content {
+  margin: auto;
+  text-align: center;
+  max-width: 800px;
+  z-index: 5;
+}
+
+.hero-title {
+  font-size: 4rem;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.hero-slogan {
+  font-size: 1.5rem;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #e0e0e0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* =========================================
+   ESTILO SERVICIOS (MENÚ DE 2 COLUMNAS)
+   ========================================= */
+.services-menu-board {
+  background-color: var(--color-card-bg); /* Un único fondo para todos */
+  padding: 50px;
+  border-radius: var(--border-radius);
+  border: 1px solid #333;
+  display: flex;
+  gap: 80px; /* Separación entre las dos columnas */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.services-column {
+  flex: 1; /* Ambas columnas ocupan lo mismo */
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Separación entre servicios (filas) */
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.service-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Línea de puntos decorativa */
+.service-dots {
+  flex: 1;
+  border-bottom: 2px dotted #444;
+  margin: 0 15px;
+}
+
+.service-price {
+  font-size: 1.3rem;
+  color: var(--color-gold);
+  font-weight: bold;
+}
+
+.service-desc {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Hover sutil para el item */
+.service-item:hover .service-name {
+  color: var(--color-gold);
+  transition: color 0.3s ease;
+}
+
+.service-item:hover .service-dots {
+  border-bottom-color: var(--color-gold);
+}
+
+/* =========================================
+   RESPONSIVE SERVICIOS
+   ========================================= */
+@media (max-width: 992px) {
+  .services-menu-board {
+    gap: 40px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-menu-board {
+    flex-direction: column; /* Una sola columna en móvil */
+    gap: 30px;
+  }
+
+  .service-name {
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================================
+   4. SECCIÓN EQUIPO
+   ========================================= */
+.team-section {
+  background-color: var(--color-black);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas en escritorio */
+  gap: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.team-card {
+  background-color: var(--color-dark-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  text-align: center;
+  transition: transform var(--transition-speed) ease;
+}
+
+.team-card:hover {
+  transform: scale(1.02);
+}
+
+.team-image-wrapper {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-img {
+  transform: scale(1.1);
+}
+
+.team-info {
+  padding: 30px;
+}
+
+.team-name {
+  font-size: 1.8rem;
+  color: var(--color-white);
+  margin-bottom: 5px;
+}
+
+.team-specialty {
+  color: var(--color-gold);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.team-bio {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* =========================================
+   5. SECCIÓN GALERÍA
+   ========================================= */
+.gallery-section {
+  background-color: var(--color-dark-gray);
+  overflow: hidden; /* Para contener la animación si fuera marquee, aquí usamos grid */
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  height: 300px;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.6s ease,
+    filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.1);
+}
+
+/* Animación de entrada suave para la galería */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-item {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* =========================================
+   BOTONES FLOTANTES (REDISEÑO BOOKSY)
+   ========================================= */
+.floating-buttons-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.float-btn {
+  width: 60px; /* Tamaño fijo para asegurar el círculo perfecto */
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: var(--color-white);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+/* Estilo específico para Booksy */
+.float-booking {
+  background-color: #00aeef; /* Azul oficial de Booksy */
+  border: none;
+}
+
+.float-booking i {
+  font-size: 1.6rem; /* Tamaño del icono escalado */
+  /* Si decides usar una imagen en lugar de icono, usa este estilo: */
+  max-width: 60%;
+  height: auto;
+}
+
+.float-whatsapp {
+  background-color: #25d366;
+  font-size: 1.8rem;
+}
+
+/* Efectos Hover */
+.float-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+  .float-btn {
+    width: 55px;
+    height: 55px;
+  }
+  .floating-buttons-container {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+.main-footer {
+  background-color: var(--color-black);
+  color: #888;
+  padding-top: 60px;
+  border-top: 1px solid #333;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-column h3 {
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-left: 3px solid var(--color-gold);
+  padding-left: 10px;
+}
+
+.contact-info address p,
+.hours-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-info i {
+  color: var(--color-gold);
+  width: 20px;
+}
+
+.social-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--color-gold);
+}
+
+.map-container iframe {
+  border-radius: var(--border-radius);
+  filter: grayscale(100%) invert(92%) contrast(83%); /* Estilo de mapa oscuro */
+}
+
+.footer-bottom {
+  background-color: #0d0d0d;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   8. RESPONSIVE / MEDIA QUERIES
+   ========================================= */
+
+/* Tablet Horizontal y Laptops Pequeños (1024px) */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet Vertical (768px) */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .nav-links {
+    display: none;
+  } /* En un proyecto real aquí iría un menú hamburguesa */
+  .main-nav {
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-slogan {
+    font-size: 1.2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  } /* Equipo apilado */
+  .team-image-wrapper {
+    height: 350px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr; /* Footer en una columna */
+    text-align: center;
+  }
+
+  .footer-column h3 {
+    border-left: none;
+    border-bottom: 2px solid var(--color-gold);
+    padding-left: 0;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+
+  .contact-info address p,
+  .hours-list li,
+  .social-nav {
+    justify-content: center;
+  }
+}
+
+/* Móvil (480px) */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  } /* Servicios en 1 columna */
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-buttons-container {
+    bottom: 15px;
+    right: 15px;
+  }
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
